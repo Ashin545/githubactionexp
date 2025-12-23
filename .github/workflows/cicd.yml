@@ -1,0 +1,36 @@
+name: CI-CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Build step
+        run: |
+          echo "Starting build..."
+          mkdir -p build
+          echo "app version 1.0" > build/app.txt
+          echo "Build completed successfully"
+
+      - name: Test step
+        run: |
+          echo "Running tests..."
+          test -f build/app.txt
+          echo "All tests passed"
+
+      - name: Deploy step
+        run: |
+          echo "Deploying application..."
+          echo "Copying artifacts to server..."
+          sleep 2
+          echo "Restarting application service..."
+          echo "Deployment completed successfully"
