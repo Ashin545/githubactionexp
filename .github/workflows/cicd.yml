@@ -16,7 +16,7 @@ jobs:
 
       - name: Build step
         run: |
-          echo "Starting build..."
+          echo "Starting to build"
           echo "Build completed successfully"
 
       - name: Test step
